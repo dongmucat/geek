@@ -1,0 +1,1 @@
+export const TOKEN_KEY = '__geek__token__'
