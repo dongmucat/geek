@@ -1,5 +1,5 @@
 import { makeAutoObservable } from "mobx";
-import { http, saveToken, loadToken } from "@/utils";
+import { http, saveToken, loadToken, clearToken } from "@/utils";
 class LoginStore {
 	// 定义数据
 	token = loadToken() || "";
@@ -18,6 +18,11 @@ class LoginStore {
 		this.token = res.data.data.token;
 		// token持久化
 		saveToken(res.data.data.token);
+	}
+
+	logout() {
+		this.token = "";
+		clearToken();
 	}
 }
 

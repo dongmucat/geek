@@ -2,13 +2,16 @@ import { Card, Button, Checkbox, Form, Input, message } from "antd";
 import logo from "@/assets/images/logo.png";
 import "./index.scss";
 import { useStore } from "@/store";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 const Login = () => {
 	const { loginStore } = useStore();
 	const navigate = useNavigate();
+	const [params] = useSearchParams();
+	if (params.get('tokenTimeOut') === '1') {
+		message.error('token失效，请重新登录！')
+	}
 	const onFinish = async (values) => {
 		const { mobile, code } = values;
-
 		try {
 			await loginStore.getToken({
 				mobile,

@@ -6,7 +6,6 @@
 import { loadToken } from "@/utils";
 import { Navigate } from "react-router-dom";
 const AuthComponent = ({ children }) => {
-	console.log(children);
 	const token = loadToken();
 	if (token) {
 		return <>{children}</>;
