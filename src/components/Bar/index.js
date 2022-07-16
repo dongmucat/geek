@@ -33,7 +33,7 @@ const Bar = ({ style, xData, series, title }) => {
 
 	useEffect(() => {
 		chartInit(barRef.current, xData, series, title);
-	}, []);
+	}, []);// eslint-disable-line
 
 	return <div ref={barRef} style={style}></div>;
 };

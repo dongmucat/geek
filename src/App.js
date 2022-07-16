@@ -1,5 +1,5 @@
 // 导入路由
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { observer } from "mobx-react-lite";
 import { HistoryRouter, history } from "./utils/history";
 // 导入页面组件
