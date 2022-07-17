@@ -20,11 +20,12 @@ import img404 from "@/assets/images/error.png";
 import { useState, useEffect } from "react";
 import { history } from "@/utils/history.js";
 import { http } from "@/utils";
+import { useChannels } from "@/hooks";
 const { Option } = Select;
 const { RangePicker } = DatePicker;
 const Article = () => {
 	// 初始化频道列表
-	const [channels, setChannels] = useState([]);
+	const [channels] = useChannels();
 	// 初始化文章列表
 	const [article, setArticle] = useState({
 		list: [],
@@ -35,13 +36,7 @@ const Article = () => {
 		page: 1,
 		per_page: 10,
 	});
-	// 发送请求，获取频道列表
-	useEffect(() => {
-		(async () => {
-			const res = await http.get("/channels");
-			setChannels(res.data.data.channels);
-		})();
-	}, []);
+
 	// 发送请求，获取文章
 	useEffect(() => {
 		(async () => {
@@ -143,7 +138,7 @@ const Article = () => {
 							shape="circle"
 							icon={<EditOutlined />}
 							onClick={() =>
-								history.push(`/home/publish?id=${data.id}`)
+								history.push(`/publish?id=${data.id}`)
 							}
 						/>
 						<Popconfirm
