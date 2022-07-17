@@ -5,6 +5,7 @@ import {
 	DiffOutlined,
 	EditOutlined,
 	LogoutOutlined,
+	UserOutlined,
 } from "@ant-design/icons";
 import "./index.scss";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
@@ -33,9 +34,13 @@ const GeekLayout = () => {
 			<Header className="header">
 				<div className="logo" />
 				<div className="user-info">
-					<span className="user-name">{userStore.userInfo.name}</span>
+					<span className="user-name">
+						<UserOutlined />
+						{userStore.userInfo.name}
+					</span>
 					<span className="user-logout">
 						<Popconfirm
+							placement="leftBottom"
 							title="是否确认退出？"
 							okText="退出"
 							onConfirm={onLogout}
