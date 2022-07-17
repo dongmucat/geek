@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import { observer } from "mobx-react-lite";
 import { HistoryRouter, history } from "./utils/history";
 import AuthComponent from "@/components/AuthComponent";
+import Loading from "@/components/Loading";
 // 导入必要组件
 import { lazy, Suspense } from "react";
 // 按需导入路由组件
@@ -16,18 +17,7 @@ const Publish = lazy(() => import("@/pages/Publish"));
 function App() {
 	return (
 		<HistoryRouter history={history}>
-			<Suspense
-				fallback={
-					<div
-						style={{
-							textAlign: "center",
-							marginTop: 200,
-						}}
-					>
-						<h2>loading...</h2>
-					</div>
-				}
-			>
+			<Suspense fallback={<Loading loadingText={"正在载入......"} />}>
 				<Routes>
 					{/* 需要鉴权的路由 */}
 					<Route
